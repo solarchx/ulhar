@@ -1,21 +1,17 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-<div class="container">
-    <h1>Dashboard</h1>
-
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <p>Selamat datang, {{ auth()->user()->name }}!</p>
-
-    @if(auth()->user()->isAdmin())
-        <a href="{{ route('books.index') }}" class="btn btn-primary">Kelola Buku</a>
-        <a href="{{ route('publishers.index') }}" class="btn btn-primary">Kelola Penerbit</a>
-        <a href="{{ route('admin.create') }}" class="btn btn-warning">Tambah Admin</a>
-    @else
-        <p>Akun Anda adalah user biasa. Tidak memiliki akses admin.</p>
-    @endif
-</div>
-@endsection
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("You're logged in!") }}
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
